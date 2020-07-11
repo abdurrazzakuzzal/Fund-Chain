@@ -23,7 +23,7 @@ class ContributeForm extends Component {
 				.contribute()
 				.send({
 					from: accounts[0],
-					value: this.state.value 
+					value: web3.utils.toWei(this.state.value, 'ether') 
 				});
 			Router.replaceRoute(`/campaigns/${this.props.address}`);
 		}catch(err){
@@ -38,7 +38,7 @@ class ContributeForm extends Component {
 				<Form.Field>
 					<label>Amount to Contribute</label>
 					<Input 
-						label="wei" 
+						label="ether" 
 						labelPosition="right"
 					 	value={this.state.value}
 					 	onChange={event=>this.setState({value:event.target.value})}
